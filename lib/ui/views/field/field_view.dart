@@ -14,7 +14,12 @@ class FieldView extends StatelessWidget {
       ) =>
           Scaffold(
         body: Center(
-          child: Text("Fuck Me Daddy"),
+          child: Row(
+            children: [
+              RaisedButton(onPressed: null),
+              Text(model.debug()),
+            ],
+          ),
         ),
       ),
       viewModelBuilder: () => FieldViewModel(),

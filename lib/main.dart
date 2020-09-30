@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:stackedDrunk/app/constants.dart';
+import 'services/navigation_service.dart' as nav;
 import 'package:stackedDrunk/app/locator.dart';
+import 'package:stackedDrunk/ui/views/startMenu/startMenu_view.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import 'app/router.gr.dart' as Router;
+import 'app/router.dart' as Router;
 
 void main() {
   setupLocator();
@@ -14,9 +17,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Let\'s get Drunk together',
-      initialRoute: Router.Routes.startMenuView,
-      onGenerateRoute: Router.Router(),
-      navigatorKey: locator<NavigationService>().navigatorKey,
+      onGenerateRoute: Router.generateRoute,
+      navigatorKey: locator<nav.NavigationService>().navigationKey,
+      home: StartMenuView(),
     );
   }
 }
