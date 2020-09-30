@@ -13,11 +13,33 @@ class FieldView extends StatelessWidget {
         child,
       ) =>
           Scaffold(
-        body: Center(
-          child: Row(
+        appBar: AppBar(
+          title: Row(
             children: [
-              RaisedButton(onPressed: null),
-              Text(model.debug()),
+              Text("Savings: " + model.barn().wheat.toString()),
+              SizedBox(
+                width: 10,
+              ),
+              Text("Level: " + model.field().lvl.toString()),
+              SizedBox(
+                width: 10,
+              ),
+              Text("UpgradeCost: " + model.field().upgradeCost.toString()),
+            ],
+          ),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RaisedButton(
+                onPressed: model.harvestField,
+                child: Text("Harvest"),
+              ),
+              RaisedButton(
+                onPressed: model.upgradeField,
+                child: Text("Upgrade"),
+              ),
             ],
           ),
         ),
