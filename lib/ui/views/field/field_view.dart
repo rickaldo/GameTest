@@ -1,6 +1,8 @@
 import 'package:stacked/stacked.dart';
 import 'package:flutter/material.dart';
 
+import '../../../widget/field_colums_widget.dart';
+
 import 'field_viewmodel.dart';
 
 class FieldView extends StatelessWidget {
@@ -20,25 +22,34 @@ class FieldView extends StatelessWidget {
               SizedBox(
                 width: 10,
               ),
-              Text("Level: " + model.field().lvl.toString()),
+              Text("UpgradeCost Barn: " + model.barn().upgradeCost.toString()),
               SizedBox(
                 width: 10,
               ),
-              Text("UpgradeCost: " + model.field().upgradeCost.toString()),
+              Text("Level: " + model.field("field1").lvl.toString()),
+              SizedBox(
+                width: 10,
+              ),
+              Text("UpgradeCost: " +
+                  model.field("field1").upgradeCost.toString()),
             ],
           ),
         ),
         body: Center(
-          child: Column(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              RaisedButton(
-                onPressed: model.harvestField,
-                child: Text("Harvest"),
+              FieldColumn(model, "field1"),
+              SizedBox(
+                width: 50,
+              ),
+              FieldColumn(model, "field2"),
+              SizedBox(
+                width: 200,
               ),
               RaisedButton(
-                onPressed: model.upgradeField,
-                child: Text("Upgrade"),
+                onPressed: model.isBarnUpgradeble() ? model.upgradeBarn : null,
+                child: Text("Upgrade Barn"),
               ),
             ],
           ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 import '../../../app/locator.dart';
 
 import '../../../services/navigation_service.dart' as nav;
@@ -8,37 +7,58 @@ import '../../../app/constants.dart' as constant;
 import '../../../models/field.dart';
 import '../../../models/barn.dart';
 
-class FieldViewModel extends BaseViewModel implements ChangeNotifier {
-  static Field field1 = new Field();
+class FieldViewModel extends BaseViewModel {
+  static Field field1 = new Field(earnings: 1, upgradeCost: 10);
+  static Field field2 = new Field(earnings: 10, upgradeCost: 200);
   static Barn barn1 = new Barn();
 
-  String debug() {
-    print(field1.earnings);
-    print(field1.lvl);
-    print(field1.upgradeCost);
-    return "Sucker";
-  }
-
-  Field field() {
-    return field1;
+  Field field(String name) {
+    switch (name) {
+      case "field1":
+        return field1;
+      case "field2":
+        return field2;
+    }
   }
 
   Barn barn() {
     return barn1;
   }
 
-  void upgradeField() {
-    field1.setLvl = 10;
-    field1.setEarnings = 45;
-    field1.setUpgradeCost = 300;
+  bool isBarnUpgradeble() {
+    if (barn1.wheat >= barn1.upgradeCost) {
+      return true;
+    }
+    return false;
   }
 
-  void harvestField() async {
-    await Future.delayed(Duration(seconds: 10), () {
-      barn1.addWheat(field1.earnings);
-      print(barn1.wheat);
-      notifyListeners();
-    });
+  bool isFieldUpgradeble(Field field) {
+    if (barn1.wheat >= field.upgradeCost) {
+      return true;
+    }
+    return false;
+  }
+
+  void upgradeField(Field field) {
+    barn1.wheat -= field.upgradeCost;
+    field.upgradeField();
+    notifyListeners();
+  }
+
+  void upgradeBarn() {
+    barn1.wheat = barn1.wheat - barn1.upgradeCost;
+    barn1.upgradeCapacity();
+    notifyListeners();
+  }
+
+  Future harvestField(Field field, String fieldname) async {
+    await runBusyFuture(
+      Future.delayed(Duration(seconds: 2), () {
+        barn1.addWheat(field.earnings);
+        notifyListeners();
+      }),
+      busyObject: fieldname,
+    );
   }
 
   final nav.NavigationService _navigationService =
@@ -48,7 +68,7 @@ class FieldViewModel extends BaseViewModel implements ChangeNotifier {
     _navigationService.navigateToNamed(constant.startMenuScreen);
   }
 
-  // Future harvestField() async {
-  //   await Future.delayed(seconds: timer).then((value) {});
-  // }
+  void navigateToMarket() {
+    _navigationService.navigateToNamed(constant.marketView);
+  }
 }

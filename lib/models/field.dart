@@ -1,9 +1,12 @@
 class Field {
-  int earnings = 2;
+  int earnings;
   int lvl = 1;
-  int upgradeCost = 10;
+  int upgradeCost;
 
-  Field();
+  Field({int earnings, int upgradeCost}) {
+    this.earnings = earnings;
+    this.upgradeCost = upgradeCost;
+  }
 
   int get getEarnings => earnings;
 
@@ -16,4 +19,10 @@ class Field {
   int get getUpgradeCost => upgradeCost;
 
   set setUpgradeCost(int upgradeCost) => this.upgradeCost = upgradeCost;
+
+  void upgradeField() {
+    lvl++;
+    earnings *= 2;
+    upgradeCost *= 3;
+  }
 }
