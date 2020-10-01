@@ -1,8 +1,10 @@
+import 'package:stacked/stacked.dart';
+
 import 'barn.dart';
 import 'market.dart';
 import 'field.dart';
 
-class Player {
+class Player extends BaseViewModel {
   int money = 0;
   Barn barn = new Barn();
 
@@ -35,9 +37,37 @@ class Player {
     barn.upgradeCapacity();
   }
 
-  Future harvestField(Field field, String fieldname) {
-    return Future.delayed(Duration(seconds: 2), () {
-      barn.addWheat(field.earnings);
-    });
+  Future test() async {}
+
+  Future harvestField(Field field, String fieldname) async {
+    await runBusyFuture(
+        Future.delayed(Duration(seconds: 2), () {
+          barn.addWheat(field.earnings);
+        }),
+        busyObject: fieldname);
+  }
+
+  bool isBarnUpgradeble() {
+    if (barn.wheat >= barn.upgradeCost) {
+      return true;
+    }
+    return false;
+  }
+
+  bool isFieldUpgradeble(Field field) {
+    if (barn.wheat >= field.upgradeCost) {
+      return true;
+    }
+    return false;
+  }
+
+  bool unlockField(Field field) {
+    if (barn.wheat >= field.upgradeCost) {
+      field.isUnlocked = true;
+      return true;
+    } else if (field.isUnlocked = true) {
+      return true;
+    }
+    return false;
   }
 }

@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:stackedDrunk/ui/views/field/field_viewmodel.dart';
+import '../models/player.dart';
 
-Widget FieldColumn(FieldViewModel model, String field) {
+Widget fieldColumn(Player player, String field, FieldViewModel model) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       RaisedButton(
-        onPressed: model.field(field).isUnlocked
+        onPressed: player.getField(field).isUnlocked
             ? model.busy(field)
                 ? null
-                : () => model.harvestField(model.field(field), field)
+                : () => player.harvestField(player.getField(field), field)
             : null,
-        child: model.field(field).isUnlocked
+        child: player.getField(field).isUnlocked
             ? Text("Harvest " + field)
             : Text("Unlock " + field),
       ),
       RaisedButton(
-        onPressed: model.isFieldUpgradeble(model.field(field))
-            ? () => model.upgradeField(model.field(field))
+        onPressed: player.isFieldUpgradeble(player.getField(field))
+            ? () => player.upgradeField(player.getField(field))
             : null,
         child: Text("Upgrade"),
       ),
