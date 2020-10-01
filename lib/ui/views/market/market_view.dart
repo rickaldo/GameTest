@@ -7,9 +7,24 @@ class MarktView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MarketViewModel>.reactive(
-      builder: (context, model, child) => Scaffold(
+      builder: (
+        context,
+        model,
+        child,
+      ) =>
+          Scaffold(
+        appBar: AppBar(
+          title: Row(
+            children: [
+              RaisedButton(
+                onPressed: model.navigateToField,
+                child: Text("Field"),
+              ),
+            ],
+          ),
+        ),
         body: Center(
-          child: Text("HI"),
+          child: Text(model.showWheatPrice()),
         ),
       ),
       viewModelBuilder: () => MarketViewModel(),

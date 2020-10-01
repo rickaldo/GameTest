@@ -32,6 +32,13 @@ class FieldView extends StatelessWidget {
               ),
               Text("UpgradeCost: " +
                   model.field("field1").upgradeCost.toString()),
+              SizedBox(
+                width: 100,
+              ),
+              RaisedButton(
+                onPressed: model.navigateToMarket,
+                child: Text("Market"),
+              ),
             ],
           ),
         ),
