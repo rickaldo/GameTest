@@ -1,23 +1,26 @@
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
+
+import 'package:stackedDrunk/services/player_service.dart';
+import '../../../models/player.dart';
 import '../../../services/navigation_service.dart' as nav;
 import '../../../app/constants.dart' as constant;
 import '../../../app/locator.dart';
-import '../../../models/market.dart';
 
 class MarketViewModel extends BaseViewModel {
   final nav.NavigationService _navigationService =
       locator<nav.NavigationService>();
 
-  Market market = new Market();
+  final Player player = locator<PlayerService>().getPlayer();
 
   String showWheatPrice() {
-    return market.calculateWheatPrice().toString();
+    return player.getMarket().calculateWheatPrice().toString();
   }
 
-  void sellWheat(){
-    
+  Player getPlayer() {
+    return player;
   }
+
+  void sellWheat() {}
 
   void navigateToStartMenu() {
     _navigationService.navigateToNamed(constant.startMenuScreen);

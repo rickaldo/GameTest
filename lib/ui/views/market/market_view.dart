@@ -24,8 +24,12 @@ class MarktView extends StatelessWidget {
           ),
         ),
         body: Center(
-          child: Text(model.showWheatPrice()),
-        ),
+            child: Row(
+          children: [
+            Text(model.showWheatPrice()),
+            Text(model.getPlayer().field1.earnings.toString()),
+          ],
+        )),
       ),
       viewModelBuilder: () => MarketViewModel(),
     );
