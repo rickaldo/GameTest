@@ -2,11 +2,17 @@ class Field {
   int earnings;
   int lvl = 1;
   int upgradeCost;
+  bool isUnlocked;
 
-  Field({int earnings, int upgradeCost}) {
+  Field({int earnings, int upgradeCost, bool isUnlocked}) {
     this.earnings = earnings;
     this.upgradeCost = upgradeCost;
+    this.isUnlocked = isUnlocked;
   }
+
+  bool get getIsUnlocked => isUnlocked;
+
+  set setIsUnlocked(bool isUnlocked) => this.isUnlocked = isUnlocked;
 
   int get getEarnings => earnings;
 

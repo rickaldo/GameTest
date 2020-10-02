@@ -2,7 +2,6 @@ import 'package:stacked/stacked.dart';
 import 'package:flutter/material.dart';
 
 import '../../../widget/field_colums_widget.dart';
-
 import 'field_viewmodel.dart';
 
 class FieldView extends StatelessWidget {
@@ -18,20 +17,36 @@ class FieldView extends StatelessWidget {
         appBar: AppBar(
           title: Row(
             children: [
-              Text("Savings: " + model.barn().wheat.toString()),
+              Text(
+                "Savings: " + model.getPlayer().getBarn().wheat.toString(),
+              ),
               SizedBox(
                 width: 10,
               ),
-              Text("UpgradeCost Barn: " + model.barn().upgradeCost.toString()),
+              Text(
+                "UpgradeCost Barn: " +
+                    model.getPlayer().getBarn().upgradeCost.toString(),
+              ),
               SizedBox(
                 width: 10,
               ),
-              Text("Level: " + model.field("field1").lvl.toString()),
+              Text(
+                "Level: " + model.getPlayer().getField("field1").lvl.toString(),
+              ),
               SizedBox(
                 width: 10,
               ),
-              Text("UpgradeCost: " +
-                  model.field("field1").upgradeCost.toString()),
+              Text(
+                "UpgradeCost: " +
+                    model.getPlayer().getField("field1").upgradeCost.toString(),
+              ),
+              SizedBox(
+                width: 100,
+              ),
+              RaisedButton(
+                onPressed: model.navigateToMarket,
+                child: Text("Market"),
+              ),
             ],
           ),
         ),
@@ -39,16 +54,18 @@ class FieldView extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FieldColumn(model, "field1"),
+              fieldColumn(model, "field1"),
               SizedBox(
                 width: 50,
               ),
-              FieldColumn(model, "field2"),
+              fieldColumn(model, "field2"),
               SizedBox(
                 width: 200,
               ),
               RaisedButton(
-                onPressed: model.isBarnUpgradeble() ? model.upgradeBarn : null,
+                onPressed: model.getPlayer().isBarnUpgradeble()
+                    ? model.getPlayer().upgradeBarn
+                    : null,
                 child: Text("Upgrade Barn"),
               ),
             ],

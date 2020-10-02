@@ -1,14 +1,9 @@
-import 'package:injectable/injectable.dart';
 import 'package:stackedDrunk/app/locator.dart';
+import 'package:stackedDrunk/services/player_service.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../app/locator.dart';
 
-@module
-abstract class ThirdPartyServicesModule {
-  @lazySingleton
-  NavigationService get navigationService;
-}
-
 void setupLocator() {
   locator.registerLazySingleton(() => NavigationService());
+  locator.registerLazySingleton(() => PlayerService());
 }
