@@ -9,7 +9,7 @@ import '../../../services/navigation_service.dart' as nav;
 import '../../../app/constants.dart' as constant;
 
 class FieldViewModel extends BaseViewModel {
-  final Player player = locator<PlayerService>().getPlayer();
+  final Player player = locator<PlayerService>().getPlayer;
 
   final nav.NavigationService _navigationService =
       locator<nav.NavigationService>();
