@@ -18,27 +18,19 @@ class FieldView extends StatelessWidget {
           title: Row(
             children: [
               Text(
-                "Savings: " + model.getPlayer().getBarn().wheat.toString(),
+                "Money: " + model.getPlayer.getMoney.toString(),
               ),
               SizedBox(
                 width: 10,
               ),
               Text(
-                "UpgradeCost Barn: " +
-                    model.getPlayer().getBarn().upgradeCost.toString(),
+                "Wheat in Barn: " + model.getPlayer.getBarn.wheat.toString(),
               ),
               SizedBox(
                 width: 10,
               ),
               Text(
-                "Level: " + model.getPlayer().getField("field1").lvl.toString(),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                "UpgradeCost: " +
-                    model.getPlayer().getField("field1").upgradeCost.toString(),
+                "Barn Capacity: " + model.getPlayer.getBarn.capacity.toString(),
               ),
               SizedBox(
                 width: 100,
@@ -63,8 +55,8 @@ class FieldView extends StatelessWidget {
                 width: 200,
               ),
               RaisedButton(
-                onPressed: model.getPlayer().isBarnUpgradeble()
-                    ? model.getPlayer().upgradeBarn
+                onPressed: model.getPlayer.isBarnUpgradeble()
+                    ? model.getPlayer.upgradeBarn
                     : null,
                 child: Text("Upgrade Barn"),
               ),

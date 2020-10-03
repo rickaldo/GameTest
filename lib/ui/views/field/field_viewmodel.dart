@@ -14,9 +14,7 @@ class FieldViewModel extends BaseViewModel {
   final nav.NavigationService _navigationService =
       locator<nav.NavigationService>();
 
-  Player getPlayer() {
-    return player;
-  }
+  Player get getPlayer => this.player;
 
   Future harvestField(Field field, String fieldname) async {
     await runBusyFuture(player.harvestField(field, fieldname),

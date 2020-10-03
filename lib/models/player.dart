@@ -6,6 +6,7 @@ import 'field.dart';
 
 class Player {
   int money = 0;
+
   Barn barn = new Barn();
 
   Field field1 = new Field(earnings: 100, isUnlocked: true, upgradeCost: 10);
@@ -22,13 +23,13 @@ class Player {
     }
   }
 
-  Barn getBarn() {
-    return barn;
-  }
+  Barn get getBarn => this.barn;
 
-  Market getMarket() {
-    return markt;
-  }
+  int get getMoney => this.money;
+
+  Market get getMarket => this.markt;
+
+  // Start Fieldmethods
 
   void upgradeField(Field field) {
     if (!field.isUnlocked) {
@@ -71,5 +72,13 @@ class Player {
       return true;
     }
     return false;
+  }
+
+  // Start Marktmethods
+  int get getWheatPrice => markt.calculateWheatPrice();
+
+  void sellWheat(int price, int amount) {
+    barn.wheat -= amount;
+    money += (price * amount);
   }
 }

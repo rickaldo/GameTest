@@ -6,22 +6,21 @@ Widget fieldColumn(FieldViewModel model, String field) {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       RaisedButton(
-        onPressed: model.getPlayer().getField(field).isUnlocked
+        onPressed: model.getPlayer.getField(field).isUnlocked
             ? model.busy(field)
                 ? null
                 : () =>
-                    model.harvestField(model.getPlayer().getField(field), field)
+                    model.harvestField(model.getPlayer.getField(field), field)
             : null,
-        child: model.getPlayer().getField(field).isUnlocked
+        child: model.getPlayer.getField(field).isUnlocked
             ? Text("Harvest " + field)
             : Text("Unlock " + field),
       ),
       RaisedButton(
-        onPressed: model
-                .getPlayer()
-                .isFieldUpgradeble(model.getPlayer().getField(field))
-            ? () => model.upgradeField(model.getPlayer().getField(field))
-            : null,
+        onPressed:
+            model.getPlayer.isFieldUpgradeble(model.getPlayer.getField(field))
+                ? () => model.upgradeField(model.getPlayer.getField(field))
+                : null,
         child: Text("Upgrade"),
       ),
     ],
