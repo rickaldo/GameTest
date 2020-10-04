@@ -10,18 +10,8 @@ class MarketViewModel extends BaseViewModel {
   final nav.NavigationService _navigationService =
       locator<nav.NavigationService>();
 
-  final Player player = locator<PlayerService>().getPlayer;
+  final PlayerService player = locator<PlayerService>();
 
-  String showWheatPrice() {
-    return player.getMarket.calculateWheatPrice().toString();
-  }
-
-  Player get getPlayer => this.player;
-
-  void sellWheat(int price, int amount) {
-    player.sellWheat(price, amount);
-    notifyListeners();
-  }
 
   void navigateToStartMenu() {
     _navigationService.navigateToNamed(constant.startMenuScreen);

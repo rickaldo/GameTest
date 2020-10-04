@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:stackedDrunk/services/barn_services.dart';
 import 'package:stackedDrunk/services/field_service.dart';
+import 'package:stackedDrunk/services/game_service.dart';
 import 'package:stackedDrunk/services/market_service.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -15,4 +16,5 @@ void setupLocator() {
   locator.registerLazySingleton(() => FieldService());
   locator.registerLazySingleton(() => BarnService());
   locator.registerLazySingleton(() => MarketService());
+  locator.registerLazySingleton(() => GameService());
 }

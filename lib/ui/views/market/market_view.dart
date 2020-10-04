@@ -16,21 +16,15 @@ class MarktView extends StatelessWidget {
         appBar: AppBar(
           title: Row(
             children: [
-              Text(
-                "Money: " + model.getPlayer.getMoney.toString(),
-              ),
+              Text("Money: "),
               SizedBox(
                 width: 10,
               ),
-              Text(
-                "Wheat in Barn: " + model.getPlayer.getBarn.wheat.toString(),
-              ),
+              Text("Wheat in Barn: "),
               SizedBox(
                 width: 10,
               ),
-              Text(
-                "Barn Capacity: " + model.getPlayer.getBarn.capacity.toString(),
-              ),
+              Text("Barn Capacity: "),
               SizedBox(
                 width: 100,
               ),
@@ -45,14 +39,11 @@ class MarktView extends StatelessWidget {
             child: Row(
           children: [
             RaisedButton(
-              onPressed: model.player.barn.wheat > 10
-                  ? () => model.sellWheat(int.parse(model.showWheatPrice()), 10)
-                  : null,
+              onPressed: null,
               child: Text(
-                model.showWheatPrice(),
+                "model.showWheatPrice()",
               ),
             ),
-            
           ],
         )),
       ),

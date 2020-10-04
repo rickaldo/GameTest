@@ -9,22 +9,15 @@ import '../../../services/navigation_service.dart' as nav;
 import '../../../app/constants.dart' as constant;
 
 class FieldViewModel extends BaseViewModel {
-  final Player player = locator<PlayerService>().getPlayer;
+  final PlayerService player = locator<PlayerService>();
 
   final nav.NavigationService _navigationService =
       locator<nav.NavigationService>();
 
-  Player get getPlayer => this.player;
-
-  Future harvestField(Field field, String fieldname) async {
-    await runBusyFuture(player.harvestField(field, fieldname),
-        busyObject: fieldname);
-  }
-
-  void upgradeField(Field field) {
-    player.upgradeField(field);
-    notifyListeners();
-  }
+  // Future harvestField(Field field, String fieldname) async {
+  //   await runBusyFuture(player.harvestField(field, fieldname),
+  //       busyObject: fieldname);
+  // }
 
   void navigateToStartMenu() {
     _navigationService.navigateToNamed(constant.startMenuScreen);

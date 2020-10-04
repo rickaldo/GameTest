@@ -17,20 +17,18 @@ class FieldView extends StatelessWidget {
         appBar: AppBar(
           title: Row(
             children: [
+              Text("Money: "),
+              SizedBox(
+                width: 10,
+              ),
               Text(
-                "Money: " + model.getPlayer.getMoney.toString(),
+                "Wheat in Barn: ",
               ),
               SizedBox(
                 width: 10,
               ),
               Text(
-                "Wheat in Barn: " + model.getPlayer.getBarn.wheat.toString(),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                "Barn Capacity: " + model.getPlayer.getBarn.capacity.toString(),
+                "Barn Capacity: ",
               ),
               SizedBox(
                 width: 100,
@@ -55,9 +53,7 @@ class FieldView extends StatelessWidget {
                 width: 200,
               ),
               RaisedButton(
-                onPressed: model.getPlayer.isBarnUpgradeble()
-                    ? model.getPlayer.upgradeBarn
-                    : null,
+                onPressed: null,
                 child: Text("Upgrade Barn"),
               ),
             ],
