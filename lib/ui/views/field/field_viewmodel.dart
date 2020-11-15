@@ -14,11 +14,6 @@ class FieldViewModel extends BaseViewModel {
   final nav.NavigationService _navigationService =
       locator<nav.NavigationService>();
 
-  // Future harvestField(Field field, String fieldname) async {
-  //   await runBusyFuture(player.harvestField(field, fieldname),
-  //       busyObject: fieldname);
-  // }
-
   void navigateToStartMenu() {
     _navigationService.navigateToNamed(constant.startMenuScreen);
   }

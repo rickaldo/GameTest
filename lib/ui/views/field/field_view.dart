@@ -37,6 +37,7 @@ class FieldView extends StatelessWidget {
                 onPressed: model.navigateToMarket,
                 child: Text("Market"),
               ),
+              RaisedButton(onPressed: null)
             ],
           ),
         ),
