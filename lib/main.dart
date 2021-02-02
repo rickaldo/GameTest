@@ -6,6 +6,7 @@ import 'package:stackedDrunk/ui/views/startMenu/startMenu_view.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import 'app/router.dart' as Router;
+import 'models/player.dart';
 
 void main() {
   setupLocator();
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Let\'s get Drunk together',
+      title: 'Let\'s get Rich and the World drunk',
       onGenerateRoute: Router.generateRoute,
       navigatorKey: locator<nav.NavigationService>().navigationKey,
       home: StartMenuView(),

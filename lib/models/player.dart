@@ -8,18 +8,26 @@ class Player {
   int money = 0;
   Barn barn = new Barn();
 
-  Field field1 = new Field(earnings: 100, isUnlocked: true, upgradeCost: 10);
-  Field field2 = new Field(earnings: 10, isUnlocked: false, upgradeCost: 100);
-
+  var fields = new List(12);
   Market markt = new Market();
 
-  Field getField(String name) {
-    switch (name) {
-      case "field1":
-        return field1;
-      case "field2":
-        return field2;
+  Player() {
+    if (fields.length == 0) {
+      for (int i = 0; i < 12; i++) {
+        if (i == 0) {
+          fields.add(
+            new Field(earnings: 1, upgradeCost: 10, isUnlocked: true),
+          );
+        } else
+          fields.add(
+            new Field(earnings: i * 10, upgradeCost: i * 12, isUnlocked: false),
+          );
+      }
     }
+  }
+
+  Field getField(int index) {
+    return fields[index];
   }
 
   Barn getBarn() {
@@ -43,7 +51,7 @@ class Player {
     barn.upgradeCapacity();
   }
 
-  Future harvestField(Field field, String fieldname) {
+  Future harvestField(Field field) {
     return Future.delayed(Duration(seconds: 2), () {
       barn.addWheat(field.earnings);
     });

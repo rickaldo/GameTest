@@ -18,9 +18,11 @@ class FieldViewModel extends BaseViewModel {
     return player;
   }
 
-  Future harvestField(Field field, String fieldname) async {
-    await runBusyFuture(player.harvestField(field, fieldname),
-        busyObject: fieldname);
+  Future harvestField(Field field, int index) async {
+    await runBusyFuture(
+      player.harvestField(field),
+      busyObject: index,
+    );
   }
 
   void upgradeField(Field field) {
