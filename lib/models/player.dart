@@ -8,7 +8,7 @@ class Player {
   int money = 0;
   Barn barn = new Barn();
 
-  var fields = new List(12);
+  var fields = new List();
   Market markt = new Market();
 
   Player() {

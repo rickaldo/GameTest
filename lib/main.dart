@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stackedDrunk/app/constants.dart';
+import 'package:stackedDrunk/ui/views/mainView/main_view.dart';
 import 'services/navigation_service.dart' as nav;
 import 'package:stackedDrunk/app/locator.dart';
 import 'package:stackedDrunk/ui/views/startMenu/startMenu_view.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Let\'s get Rich and the World drunk',
       onGenerateRoute: Router.generateRoute,
       navigatorKey: locator<nav.NavigationService>().navigationKey,
-      home: StartMenuView(),
+      home: MainView(),
     );
   }
 }
