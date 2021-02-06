@@ -28,52 +28,34 @@ class FieldView extends StatelessWidget {
             borderOnForeground: true,
             elevation: 10.0,
             child: GridTile(
-              header: Center(
-                child: Text(
-                  "Field " + (index + 1).toString(),
+              header: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.info_sharp),
+                    onPressed: () {
+                      //@TODO: Bottom Sheet
+                    },
+                  ),
+                ],
+              ),
+              child: GestureDetector(
+                onTap: () {
+                  model.harvestField(index);
+                  print(index);
+                },
+                child: FittedBox(
+                  child: Image.asset('assets/img/img.png'),
                 ),
               ),
-              child: FittedBox(
-                child: Image.asset('assets/img/img.png'),
-              ),
-              footer: FittedBox(
-                child: Row(
-                  children: [
-                    Text(
-                      "Lvl: " +
-                          model.getPlayer().getField(index).lvl.toString(),
-                    ),
-                    Text(
-                      "Ertrag: " +
-                          model
-                              .getPlayer()
-                              .getField(index)
-                              .getEarnings
-                              .toString(),
-                    ),
-                    Text(
-                      "Upgrade Kosten: " +
-                          model
-                              .getPlayer()
-                              .getField(index)
-                              .getUpgradeCost
-                              .toString(),
-                    ),
-                  ],
-                ),
+              footer: Text(
+                "Field: " + index.toString(),
+                textAlign: TextAlign.center,
               ),
             ),
           );
         },
       ),
-      // RaisedButton(
-      //   onPressed: model.getPlayer().isBarnUpgradeble()
-      //       ? model.getPlayer().upgradeBarn
-      //       : null,
-      //   child: Text("Upgrade Barn"),
-      // ),
-      //],
-
       viewModelBuilder: () => FieldViewModel(),
     );
   }

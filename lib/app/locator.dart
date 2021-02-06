@@ -9,4 +9,5 @@ GetIt locator = GetIt.instance;
 void setupLocator() {
   locator.registerLazySingleton(() => nav.NavigationService());
   locator.registerLazySingleton(() => PlayerService());
+  locator.registerSingleton(BottomSheetService());
 }

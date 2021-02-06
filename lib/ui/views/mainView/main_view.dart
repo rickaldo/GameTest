@@ -20,7 +20,7 @@ class MainView extends StatelessWidget {
         appBar: AppBar(
           title: FittedBox(
             child: Text(
-              "Somethin Cool!",
+              model.getPlayer().getBarn().wheat.toString(),
             ),
           ),
           actions: [
