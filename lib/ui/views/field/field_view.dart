@@ -1,7 +1,7 @@
 import 'package:stacked/stacked.dart';
 import 'package:flutter/material.dart';
 
-import '../../../widget/field_colums_widget.dart';
+import '../../../widget/pop_up_dialog.dart';
 import 'field_viewmodel.dart';
 
 class FieldView extends StatelessWidget {
@@ -34,7 +34,14 @@ class FieldView extends StatelessWidget {
                   IconButton(
                     icon: Icon(Icons.info_sharp),
                     onPressed: () {
-                      //@TODO: Bottom Sheet
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => buildPopupDialog(
+                          context,
+                          model,
+                          index,
+                        ),
+                      );
                     },
                   ),
                 ],

@@ -10,6 +10,7 @@ import '../../../app/constants.dart' as constant;
 
 class FieldViewModel extends BaseViewModel {
   final Player player = locator<PlayerService>().getPlayer();
+  List<bool> _selected = [true, false, false];
 
   final nav.NavigationService _navigationService =
       locator<nav.NavigationService>();
@@ -25,6 +26,15 @@ class FieldViewModel extends BaseViewModel {
     );
   }
 
+  List<bool> upgradeSteps(int index) {
+    _selected[index] = !_selected[index];
+    notifyListeners();
+  }
+
+  List<bool> getSelected() {
+    return _selected;
+  }
+
   void upgradeField(Field field) {
     player.upgradeField(field);
     notifyListeners();
@@ -32,6 +42,10 @@ class FieldViewModel extends BaseViewModel {
 
   void navigateToStartMenu() {
     _navigationService.navigateToNamed(constant.startMenuScreen);
+  }
+
+  void popBack() {
+    _navigationService.popBack();
   }
 
   void navigateToMarket() {
