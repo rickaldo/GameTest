@@ -52,7 +52,7 @@ class FieldView extends StatelessWidget {
                   print(index);
                 },
                 child: FittedBox(
-                  child: Image.asset('assets/img/img.png'),
+                  child: Image.asset('assets/img/Download.jpeg'),
                 ),
               ),
               footer: Text(
